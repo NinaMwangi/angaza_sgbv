@@ -1,0 +1,194 @@
+# ============================================================
+# React Native – Universal .gitignore
+# ============================================================
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-store/
+
+# ============================================================
+# React Native / Metro Bundler
+# ============================================================
+.expo/
+.expo-shared/
+dist/
+build/
+temp/
+.bundle/
+coverage/
+*.iml
+*.keystore
+*.jks
+
+# Metro cache
+metro-cache/
+.cache/
+.packager/
+.watchmanconfig
+
+# ============================================================
+# Android
+# ============================================================
+android/.gradle/
+android/.idea/
+android/.cxx/
+android/.settings/
+android/app/build/
+android/build/
+android/local.properties
+android/app/release/
+android/app/debug/
+android/gradle.properties.backup
+android/gradlew.bat
+android/gradlew
+android/gradle/
+android/gradle-wrapper.jar
+android/gradle-wrapper.properties
+
+# NDK / CMake intermediate
+android/app/.externalNativeBuild/
+android/app/.cxx/
+
+# ============================================================
+# iOS
+# ============================================================
+ios/Pods/
+ios/Podfile.lock
+ios/build/
+ios/DerivedData/
+ios/.xcworkspace
+ios/*.xcuserstate
+ios/*.xcuserdata/
+ios/.idea/
+ios/*.xcuserdatad/
+ios/.DS_Store
+ios/.expo/
+ios/ExpoKitApp/
+ios/Frameworks/
+ios/ReactNativeApp.xcworkspace/
+ios/Runner.xcworkspace/
+
+# ============================================================
+# Xcode & macOS
+# ============================================================
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata/
+*.xccheckout
+*.moved-aside
+.DS_Store
+*.swp
+*.lock
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# macOS metadata
+.AppleDouble
+.LSOverride
+Icon?
+__MACOSX/
+
+# ============================================================
+# IDEs / Editors
+# ============================================================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.vs/
+*.log
+*.tmp
+*.bak
+*.orig
+
+# ============================================================
+# Misc
+# ============================================================
+.env
+.env.*
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+*.env.js
+*.env.json
+
+# Logs
+*.log
+*.out
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.orig
+
+# ============================================================
+# React Native Nitro / JSI builds
+# ============================================================
+android/app/.cxx/
+android/app/build/generated/
+android/build/intermediates/
+android/build/outputs/
+ios/build/
+ios/DerivedData/
+*.so
+*.dylib
+*.a
+*.o
+
+# ============================================================
+# Fastlane / Bundler
+# ============================================================
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+.bundle/
+
+# ============================================================
+# Testing
+# ============================================================
+coverage/
+jest-cache/
+jest-results.json
+test-results/
+reports/
+
+# ============================================================
+# Optional: custom assets / secrets
+# ============================================================
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+secret.json
+credentials.json
+key.json
+
+# ============================================================
+# React Native Nitro Modules build outputs
+# ============================================================
+node_modules/react-native-nitro-modules/android/build/
+node_modules/react-native-nitro-sound/android/build/
+node_modules/react-native-nitro-*/build/
