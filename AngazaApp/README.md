@@ -2,6 +2,8 @@
 
 A React Native mobile application designed to provide emergency safety features for survivors of domestic violence and vulnerable individuals. The app includes SOS alerts, location tracking, sensor-based dormancy detection, and emergency contact notifications.
 
+### Demo: https://drive.google.com/file/d/1VWWi9rlBzcHjzwVN6BTvQtbNG7moLVnt/view?usp=share_link
+
 ##  Features
 
 ### Core Features (MVP)
@@ -29,7 +31,6 @@ AngazaApp/
 ├── android/                      # Android native code
 │   └── app/src/main/
 │       └── AndroidManifest.xml   # Permissions configuration
-├── ios/                          # iOS native code (if applicable)
 ├── src/
 │   └── services/
 │       ├── audioService.js       # Audio recording functionality
