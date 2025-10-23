@@ -1,4 +1,4 @@
-package com.example.mobile
+package app.angaza.sgbv
 
 import io.flutter.embedding.android.FlutterActivity
 

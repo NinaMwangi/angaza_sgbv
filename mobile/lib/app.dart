@@ -8,10 +8,15 @@ class SafeNotesApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Notes',
       theme: ThemeData(
-        colorSchemeSeed: Colors.red,
+        colorSchemeSeed: const Color.fromARGB(255, 194, 13, 0),
         useMaterial3: true,
       ),
       routerConfig: appRouter,
     );
   }
 }
+
+return MaterialApp.router(
+  title: 'Notes',   // launcher/OS sees “Notes”
+  ...
+);

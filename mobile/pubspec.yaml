@@ -6,6 +6,14 @@ flutter:
   assets:
     - assets/icons/
 
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/icons/notes_icon.png"   # neutral notes icon
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icons/notes_icon_fg.png"
+
+
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -51,6 +59,7 @@ dependencies:
   geolocator: ^13.0.2
   permission_handler: ^11.3.1
   record: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
