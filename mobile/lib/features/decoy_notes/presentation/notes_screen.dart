@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../services/platform_channels.dart'; // adjust path if needed
+import '../../../services/platform_channels.dart'; 
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});

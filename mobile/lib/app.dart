@@ -6,13 +6,15 @@ class SafeNotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final light = ColorScheme.fromSeed(seedColor: const Color(0xFFC20D00), brightness: Brightness.light);
+    final dark  = ColorScheme.fromSeed(seedColor: const Color(0xFFC20D00), brightness: Brightness.dark);
+
     return MaterialApp.router(
-      title: 'Notes', // decoy app title
+      title: 'Notes', // decoy
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorSchemeSeed: const Color(0xFFC20D00),
-        useMaterial3: true,
-      ),
+      themeMode: ThemeMode.system,
+      theme: ThemeData(colorScheme: light, useMaterial3: true),
+      darkTheme: ThemeData(colorScheme: dark,  useMaterial3: true),
       routerConfig: appRouter,
     );
   }
