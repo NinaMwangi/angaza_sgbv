@@ -3,20 +3,17 @@ import 'router.dart';
 
 class SafeNotesApp extends StatelessWidget {
   const SafeNotesApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Notes',
+      title: 'Notes', // decoy app title
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: const Color.fromARGB(255, 194, 13, 0),
+        colorSchemeSeed: const Color(0xFFC20D00),
         useMaterial3: true,
       ),
       routerConfig: appRouter,
     );
   }
 }
-
-return MaterialApp.router(
-  title: 'Notes',   // launcher/OS sees “Notes”
-  ...
-);

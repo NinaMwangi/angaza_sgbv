@@ -1,40 +1,82 @@
-<!-- QUICK SETTINGS TILE -->
-<service
-    android:name=".SosTileService"
-    android:label="SOS"
-    android:icon="@mipmap/ic_launcher"
-    android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-    android:exported="true">
-    <intent-filter>
-        <action android:name="android.service.quicksettings.action.QS_TILE" />
-    </intent-filter>
-</service>
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.angaza.sgbv">
 
-<!-- APP WIDGET PROVIDER -->
-<receiver
-    android:name=".SosAppWidgetProvider"
-    android:exported="true">
-    <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-        <action android:name="app.angaza.sgbv.ACTION_WIDGET_SOS" />
-    </intent-filter>
+    <!-- Normal example permissions (add what you actually need) -->
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+
+    <application
+        android:label="Angaza"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="false">
     <meta-data
-        android:name="android.appwidget.provider"
-        android:resource="@xml/sos_appwidget_info" />
-</receiver>
+        android:name="flutterEmbedding"
+        android:value="2" />
 
-<activity
-    android:name=".MainActivity"
-    android:exported="true"
-    android:launchMode="singleTop"
-    android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenDensity|uiMode"
-    android:hardwareAccelerated="true"
-    android:windowSoftInputMode="adjustResize">
-    <!-- Optional deep link to open SOS directly -->
-    <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="angaza" android:host="sos"/>
-    </intent-filter>
-</activity>
+        <!-- MAIN / LAUNCHER activity (required) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="
+                orientation|
+                keyboardHidden|
+                keyboard|
+                screenSize|
+                smallestScreenSize|
+                layoutDirection|
+                locale|
+                fontScale|
+                screenLayout|
+                density|
+                uiMode|
+                navigation|
+                colorMode|
+                grammaticalGender|
+                fontWeightAdjustment">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Optional deep link to open SOS directly -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="angaza" android:host="sos"/>
+            </intent-filter>
+        </activity>
+
+
+        <!-- QUICK SETTINGS TILE -->
+        <service
+            android:name=".SosTileService"
+            android:label="SOS"
+            android:icon="@mipmap/ic_launcher"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- APP WIDGET PROVIDER -->
+        <receiver
+            android:name=".SosAppWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="app.angaza.sgbv.ACTION_WIDGET_SOS" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/sos_appwidget_info" />
+        </receiver>
+
+    </application>
+</manifest>

@@ -30,7 +30,7 @@ class _SosScreenState extends State<SosScreen> {
     setState(() => _sosActive = false);
     context.pop();
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,3 +69,4 @@ class _SosScreenState extends State<SosScreen> {
     );
   }
 }
+
