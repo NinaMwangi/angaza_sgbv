@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Notes</string>   <!-- what shows on launcher -->
+    <string name="shortcut_sos_short">SOS</string>
+    <string name="shortcut_sos_long">Open SOS screen</string>
 </resources>

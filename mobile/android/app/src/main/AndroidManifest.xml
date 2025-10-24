@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
 
 
     <application
@@ -18,6 +20,11 @@
     <meta-data
         android:name="flutterEmbedding"
         android:value="2" />
+    
+    <meta-data 
+        android:name="android.app.shortcuts" 
+        android:resource="@xml/shortcuts" />
+
 
         <!-- MAIN / LAUNCHER activity (required) -->
         <activity

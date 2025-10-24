@@ -1,11 +1,14 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'app.dart';
 import 'package:flutter/services.dart';
-import 'services/platform_channels.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'app.dart';
+import 'services/platform_channels.dart';
 import 'features/sos/domain/outbox_service.dart';
 import 'core/env/env.dart';
-import 'dart:async';
+import 'core/theme_controller.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +16,9 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('trusted_contacts');
   await Hive.openBox('outbox');
+  await Hive.openBox('incidents');
+  await Hive.openBox('settings');
 
-  // MethodChannel handler (QS tile / widget triggers)
   const channel = MethodChannel('app.angaza.sgbv/channel');
   channel.setMethodCallHandler(PlatformChannels.I.handleNativeCall);
 
@@ -22,6 +26,7 @@ void main() async {
     unawaited(OutboxService.retryAll());
   }
 
-  runApp(const SafeNotesApp());
+  runApp(
+    ChangeNotifierProvider(create: (_) => ThemeController(), child: const SafeNotesApp()),
+  );
 }
-
