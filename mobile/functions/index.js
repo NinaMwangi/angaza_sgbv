@@ -1,32 +1,63 @@
 /**
- * Import function triggers from their respective submodules:
- *
- * const {onCall} = require("firebase-functions/v2/https");
- * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ * Triggered when a new audio file is uploaded.
+ * Converts speech → text using Whisper, then writes transcript to Firestore.
  */
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const { OpenAI } = require("openai");
 
-const {setGlobalOptions} = require("firebase-functions");
-const {onRequest} = require("firebase-functions/https");
-const logger = require("firebase-functions/logger");
+admin.initializeApp();
+const db = admin.firestore();
+const openai = new OpenAI({ apiKey: functions.config().openai.key });
 
-// For cost control, you can set the maximum number of containers that can be
-// running at the same time. This helps mitigate the impact of unexpected
-// traffic spikes by instead downgrading performance. This limit is a
-// per-function limit. You can override the limit for each function using the
-// `maxInstances` option in the function's options, e.g.
-// `onRequest({ maxInstances: 5 }, (req, res) => { ... })`.
-// NOTE: setGlobalOptions does not apply to functions using the v1 API. V1
-// functions should each use functions.runWith({ maxInstances: 10 }) instead.
-// In the v1 API, each function can only serve one request per container, so
-// this will be the maximum concurrent request count.
-setGlobalOptions({ maxInstances: 10 });
+exports.transcribeAudio = functions.storage
+  .object()
+  .onFinalize(async (object) => {
+    const filePath = object.name;          // e.g. audio/{userId}/{incidentId}.m4a
+    if (!filePath || !filePath.startsWith("audio/")) return null;
 
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
+    const pathParts = filePath.split("/");
+    if (pathParts.length < 3) return null;
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+    const userId = pathParts[1];
+    const fileName = pathParts[2];
+    const incidentId = fileName.replace(".m4a", "");
+
+    try {
+      // Download the file to temp
+      const bucket = admin.storage().bucket(object.bucket);
+      const tempFile = `/tmp/${fileName}`;
+      await bucket.file(filePath).download({ destination: tempFile });
+
+      // Transcribe with Whisper
+      const resp = await openai.audio.transcriptions.create({
+        file: require("fs").createReadStream(tempFile),
+        model: "whisper-1",
+        language: "sw",          // Swahili supported
+        response_format: "text",
+      });
+
+      const transcript = resp.text || resp.data || "";
+
+      // Write transcript back to Firestore
+      await db.collection("incidents").doc(incidentId).set(
+        {
+          transcript: transcript,
+          transcriptedAt: admin.firestore.FieldValue.serverTimestamp(),
+          transcriptSource: "whisper",
+        },
+        { merge: true },
+      );
+
+      console.log(`✅ Transcribed ${incidentId} (${transcript.length} chars)`);
+    } catch (err) {
+      console.error("❌ ASR Error:", err);
+      await db.collection("incidents").doc(incidentId).set(
+        {
+          transcriptError: err.message,
+        },
+        { merge: true },
+      );
+    }
+    return null;
+  });

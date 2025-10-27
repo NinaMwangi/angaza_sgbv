@@ -10,6 +10,13 @@ import 'core/env/env.dart';
 import 'core/theme_controller.dart';
 import 'package:provider/provider.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'core/firebase_options.dart';
+import 'core/firebase_initializer.dart';
+
+import 'dart:async' show unawaited;
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -23,7 +30,7 @@ void main() async {
   channel.setMethodCallHandler(PlatformChannels.I.handleNativeCall);
 
   if (Env.apiBase != null) {
-    unawaited(OutboxService.retryAll());
+    unawaited(OutboxService.trySyncAll());
   }
 
   runApp(
