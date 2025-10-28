@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:onnxruntime/onnxruntime.dart';
 
 import 'app.dart';
 import 'services/platform_channels.dart';
@@ -25,6 +26,7 @@ void main() async {
   await Hive.openBox('outbox');
   await Hive.openBox('incidents');
   await Hive.openBox('settings');
+  OrtEnv.instance.init();
 
   const channel = MethodChannel('app.angaza.sgbv/channel');
   channel.setMethodCallHandler(PlatformChannels.I.handleNativeCall);

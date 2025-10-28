@@ -5,6 +5,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
+    - assets/ml/best_classification_model.onnx
 
 flutter_icons:
   android: true
@@ -75,7 +76,7 @@ dependencies:
   firebase_crashlytics: ^4.1.2
   firebase_analytics: ^11.2.1
   sensors_plus: ^6.1.0
-  onnxruntime_flutter: ^1.16.3
+  onnxruntime: ^1.4.1
   collection: ^1.18.0
 
 
@@ -89,10 +90,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
-
-flutter:
-  assets:
-    - assets/ml/best_classification_model.onnx
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

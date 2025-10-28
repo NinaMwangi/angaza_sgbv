@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sensors_plus/sensors_plus.dart';
+import 'package:provider/provider.dart';
 
 
 import '../../../core/permissions.dart';
@@ -19,8 +20,8 @@ import '../../contacts/data/contacts_repo.dart';
 import '../domain/outbox_service.dart';
 import '../domain/recording_service.dart';
 import '../../incidents/data/incidents_repo.dart';
+import '../../sos/domain/dormancy_service.dart';
 
-import 'package:provider/provider.dart';
 
 class SosScreen extends StatefulWidget {
   const SosScreen({super.key});
@@ -43,10 +44,16 @@ class _SosScreenState extends State<SosScreen> {
 
   _DormancyMonitor? _dm;
 
+  late DormancyService _dorm;
+
+
   @override
   void initState() {
     super.initState();
-
+    _dorm = DormancyService(onDormant: () => _onTrigger());
+    _dorm.init().then((_) {
+      if (mounted) _dorm.start();
+    });
     // Listen for external triggers (QS Tile / Widget / Deep link)
     _externalSub = PlatformChannels.I.onExternalTrigger.listen((_) {
       if (!_sosActive) _onTrigger();
@@ -55,6 +62,12 @@ class _SosScreenState extends State<SosScreen> {
     // Foreground only: volume-up triple-press (best-effort)
     RawKeyboard.instance.addListener(_onRawKey);
     _listeningKeys = true;
+
+    _dorm = DormancyService(onDormant: () => _onTrigger());
+    _dorm.init().then((_) {
+      if (mounted) _dorm.start();
+    });
+
   }
 
   @override
@@ -62,6 +75,7 @@ class _SosScreenState extends State<SosScreen> {
     _externalSub.cancel();
     if (_listeningKeys) RawKeyboard.instance.removeListener(_onRawKey);
     _dm?.stop();
+    _dorm.dispose();
     super.dispose();
   }
 
