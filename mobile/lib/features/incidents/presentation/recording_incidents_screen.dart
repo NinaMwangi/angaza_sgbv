@@ -3,7 +3,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import '../../sos/domain/recording_service.dart';
 import '../../sos/domain/outbox_service.dart';
-import '../../incidents/data/incidents_repo.dart';
+import '../data/incidents_repo.dart';
 
 class RecordingsIncidentsScreen extends StatefulWidget {
   const RecordingsIncidentsScreen({super.key});
