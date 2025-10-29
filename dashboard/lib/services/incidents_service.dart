@@ -5,6 +5,7 @@ class Incident {
   final double? lat, lng;
   final DateTime ts;
   final String? transcript;
+  final String? message;
 
   Incident({
     required this.id,
@@ -12,6 +13,7 @@ class Incident {
     this.lng,
     required this.ts,
     this.transcript,
+    this.message,
   });
 
   static Incident fromDoc(DocumentSnapshot d) {
@@ -22,6 +24,7 @@ class Incident {
       lng: (m['lng'] as num?)?.toDouble(),
       ts: DateTime.tryParse(m['timestamp'] ?? '') ?? DateTime.now(),
       transcript: m['transcript'] as String?,
+      message: m['message'] as String?,
     );
   }
 }
