@@ -5,7 +5,7 @@ It combines **offline safety triggers**, **trusted contacts**, **SMS fallback**,
 
 ---
 
-## 📱 1. Mobile App (Flutter)
+##  1. Mobile App (Flutter)
 
 ### Overview
 The **Angaza mobile app** is a lightweight safety companion that:
@@ -21,7 +21,7 @@ The **Angaza mobile app** is a lightweight safety companion that:
 
 ---
 
-### 🔧 Installation and Setup
+###  Installation and Setup
 
 #### 1. Prerequisites
 - **Flutter SDK ≥ 3.19**
@@ -52,11 +52,11 @@ or choose a device in VS Code → **Run → Start Debugging**.
 
 ### 📲 Usage Guide
 
-#### 🚪 Decoy Mode
+####  Decoy Mode
 - Launches as **Notes**.
 - Long-press the header or tap **Angaza** in the title to open the **SOS interface**.
 
-#### 🆘 SOS Mode
+####  SOS Mode
 1. Add **Trusted Contacts** via the people icon.
 2. Tap **SOS** — app will:
    - Send an SMS to all contacts (offline mode)
@@ -69,15 +69,15 @@ or choose a device in VS Code → **Run → Start Debugging**.
 - Homescreen **Widget** → triggers SOS instantly
 - **Dormancy Model** (ONNX) auto-activates SOS when abnormal inactivity is detected
 
-#### 🌓 Theme
+####  Theme
 Toggle dark/light mode using the brightness icon in the top bar.
 
-#### 📋 History
+####  History
 View previous incidents under “History.”
 
 ---
 
-### 🔒 Firebase Integration (MVP)
+###  Firebase Integration (MVP)
 - **Firestore Collection:** `incidents`
 - **Storage Folder:** `audio/`
 - **Auth:** Anonymous user auto-created at startup
@@ -93,7 +93,7 @@ View previous incidents under “History.”
 
 ---
 
-## 🖥️ 2. Dashboard (Web / Admin)
+##  2. Dashboard (Web / Admin)
 
 ### Overview
 The **Angaza Dashboard** is built in Flutter Web. It:
@@ -104,7 +104,7 @@ The **Angaza Dashboard** is built in Flutter Web. It:
 
 ---
 
-### 🧭 Setup and Run
+###  Setup and Run
 From the `dashboard` folder:
 ```bash
 flutter pub get
@@ -122,14 +122,14 @@ flutter run -d chrome
 
 ---
 
-### 🗂️ Firestore Structure
+###  Firestore Structure
 | Collection | Fields |
 |-------------|--------|
 | **incidents** | `id`, `timestamp`, `lat`, `lng`, `contacts`, `audioUrl`, `synced`, `deviceId`, `notes` |
 
 ---
 
-## 🧠 3. Machine Learning Integration
+##  3. Machine Learning Integration
 
 ### Dormancy Detection (ONNX)
 - Runs an **ONNX model** (`best_classification_model.onnx`) locally.
@@ -143,7 +143,7 @@ flutter run -d chrome
 
 ---
 
-## 🧩 4. Project Structure
+##  4. Project Structure
 
 ```
 angaza_sgbv/
@@ -181,7 +181,7 @@ angaza_sgbv/
 
 ---
 
-## 🚀 5. How to Test MVP End-to-End
+##  5. How to Test MVP End-to-End
 
 1. **Open mobile app**
    - Trigger SOS → SMS + Firestore write.
@@ -193,28 +193,28 @@ angaza_sgbv/
 
 ---
 
-## 🧱 6. Pending Development
+##  6. Pending Development
 
 | Area | Description | Priority |
 |------|--------------|-----------|
-| 🔊 Audio | Offline recording + upload to Firebase Storage | 🔥 |
-| 🧠 Dormancy | Improve ONNX model inference; reduce false positives | 🔥 |
-| 🧾 Dashboard | Filtering + analytics by date/region | 🔥 |
-| 🔐 Auth | Secure endpoints + roles (admin, agent, anonymous) | ⚙️ |
-| 🗺️ Map | Add heatmaps, clustering improvements | ⚙️ |
-| 🗣️ ASR | Integrate Whisper for audio-to-text (Swahili/English) | ⚙️ |
-| 🧮 Backend | Optional REST API for SMS/incident routing | ⚙️ |
-| 🧰 Packaging | Release signing configs, icons, splash screens | 🧩 |
-| 🧾 Docs | System architecture, design diagrams | 🧩 |
+|  Audio | Offline recording + upload to Firebase Storage | 🔥 |
+|  Dormancy | Improve ONNX model inference; reduce false positives | 🔥 |
+|  Dashboard | Filtering + analytics by date/region | 🔥 |
+|  Auth | Secure endpoints + roles (admin, agent, anonymous) | ⚙️ |
+|  Map | Add heatmaps, clustering improvements | ⚙️ |
+|  ASR | Integrate Whisper for audio-to-text (Swahili/English) | ⚙️ |
+|  Backend | Optional REST API for SMS/incident routing | ⚙️ |
+|  Packaging | Release signing configs, icons, splash screens | 🧩 |
+|  Docs | System architecture, design diagrams | 🧩 |
 
 ---
 
-## 💡 Credits
+##  Credits
 Developed by **Nina Mwangi** and contributors  
 Supervised under **Angaza SGBV Project (2025)**  
 Powered by **Flutter**, **Firebase**, and **ONNXRuntime**
 
 ---
 
-## 🛡️ License
+##  License
 This project is licensed under the **MIT License** — see `LICENSE` file for details.
