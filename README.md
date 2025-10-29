@@ -5,6 +5,10 @@ It combines **offline safety triggers**, **trusted contacts**, **SMS fallback**,
 
 ---
 
+## Links
+- Demo - https://drive.google.com/file/d/14Mo_-dMVaZcxzgzV037rkrLbo5XhoPfw/view?usp=share_link
+- APK - https://drive.google.com/file/d/18uaBjBik4m95eaVNOpbxW5T7my40UZqt/view?usp=share_link
+
 ##  1. Mobile App (Flutter)
 
 ### Overview
