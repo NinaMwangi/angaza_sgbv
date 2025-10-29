@@ -1,4 +1,4 @@
-# 🌍 Angaza SGBV Platform
+#  Angaza SGBV Platform
 
 **Angaza** is a mobile + web platform designed to support survivors and responders of Sexual and Gender-Based Violence (SGBV).  
 It combines **offline safety triggers**, **trusted contacts**, **SMS fallback**, and **Firebase-powered incident tracking** with a web-based **dashboard** for visualization and response.
@@ -50,7 +50,7 @@ or choose a device in VS Code → **Run → Start Debugging**.
 
 ---
 
-### 📲 Usage Guide
+###  Usage Guide
 
 ####  Decoy Mode
 - Launches as **Notes**.
@@ -64,7 +64,7 @@ or choose a device in VS Code → **Run → Start Debugging**.
    - Sync to Firebase (if connected)
 3. Incident details: timestamp, location, contacts, and optional audio recording.
 
-#### ⚡ Shortcuts
+####  Shortcuts
 - Add **Quick Settings Tile** (Android) → “SOS”
 - Homescreen **Widget** → triggers SOS instantly
 - **Dormancy Model** (ONNX) auto-activates SOS when abnormal inactivity is detected
@@ -197,15 +197,15 @@ angaza_sgbv/
 
 | Area | Description | Priority |
 |------|--------------|-----------|
-|  Audio | Offline recording + upload to Firebase Storage | 🔥 |
-|  Dormancy | Improve ONNX model inference; reduce false positives | 🔥 |
-|  Dashboard | Filtering + analytics by date/region | 🔥 |
-|  Auth | Secure endpoints + roles (admin, agent, anonymous) | ⚙️ |
-|  Map | Add heatmaps, clustering improvements | ⚙️ |
-|  ASR | Integrate Whisper for audio-to-text (Swahili/English) | ⚙️ |
-|  Backend | Optional REST API for SMS/incident routing | ⚙️ |
-|  Packaging | Release signing configs, icons, splash screens | 🧩 |
-|  Docs | System architecture, design diagrams | 🧩 |
+|  Audio | Offline recording + upload to Firebase Storage 
+|  Dormancy | Improve ONNX model inference; reduce false positives 
+|  Dashboard | Filtering + analytics by date/region 
+|  Auth | Secure endpoints + roles (admin, agent, anonymous) 
+|  Map | Add heatmaps, clustering improvements 
+|  ASR | Integrate Whisper for audio-to-text (Swahili/English) 
+|  Backend | Optional REST API for SMS/incident routing 
+|  Packaging | Release signing configs, icons, splash screens 
+|  Docs | System architecture, design diagrams 
 
 ---
 
