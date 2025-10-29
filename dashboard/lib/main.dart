@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/firebase_initializer.dart';
+import 'ui/admin_gate.dart';
 import 'ui/map_page.dart';
 
 void main() async {
@@ -10,15 +11,14 @@ void main() async {
 
 class DashboardApp extends StatelessWidget {
   const DashboardApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Angaza Dashboard',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.red),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Angaza — Incidents Map')),
-        body: const MapPage(),
-      ),
+      // AdminGate renders its own AppBar/Scaffold and the LoginScreen when needed
+      home: const AdminGate(child: MapPage()),
     );
   }
 }
