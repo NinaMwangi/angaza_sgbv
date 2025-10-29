@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'core/firebase_options.dart';
 import 'core/firebase_initializer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 import 'dart:async' show unawaited;
 
@@ -26,6 +28,8 @@ void main() async {
   await Hive.openBox('outbox');
   await Hive.openBox('incidents');
   await Hive.openBox('settings');
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseAuth.instance.signInAnonymously();
   OrtEnv.instance.init();
 
   const channel = MethodChannel('app.angaza.sgbv/channel');

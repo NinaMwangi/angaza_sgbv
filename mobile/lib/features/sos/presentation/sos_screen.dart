@@ -21,6 +21,7 @@ import '../domain/outbox_service.dart';
 import '../domain/recording_service.dart';
 import '../../incidents/data/incidents_repo.dart';
 import '../../sos/domain/dormancy_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class SosScreen extends StatefulWidget {
@@ -222,6 +223,19 @@ class _SosScreenState extends State<SosScreen> {
     final lat = _lastPos?.latitude?.toStringAsFixed(5);
     final lng = _lastPos?.longitude?.toStringAsFixed(5);
 
+    final User? user = FirebaseAuth.instance.currentUser;
+    final String label;
+
+    if (user == null) {
+      label = 'Signed out';
+    } else if (user.isAnonymous) {
+      // Here, 'user' is safely known to be non-null
+      label = 'Anonymous user';
+    } else {
+      // 'user' is also non-null here
+      label = user.email ?? 'Account';
+    }
+
     return Scaffold(
       appBar: AppBar(
         // Tap title → decoy Notes (home)
@@ -245,7 +259,13 @@ class _SosScreenState extends State<SosScreen> {
             onPressed: () => context.read<ThemeController>().toggle(),
             icon: const Icon(Icons.brightness_6),
           ),
+          IconButton(
+            tooltip: 'Account',
+            onPressed: () => context.push('/login'),
+            icon: const Icon(Icons.person_outline),
+          ),
         ],
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),

@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import '../../../core/storage_service.dart';
+import '../../../core/env/env.dart';
 
 class OutboxService {
   static final _box = Hive.box('outbox');
@@ -44,6 +45,7 @@ class OutboxService {
 
   /// Try syncing everything in the box.
   static Future<void> trySyncAll() async {
+    if (!Env.useFirebaseSync) return;  
     for (final key in _box.keys) {
       await _trySyncOne(key as String);
     }
